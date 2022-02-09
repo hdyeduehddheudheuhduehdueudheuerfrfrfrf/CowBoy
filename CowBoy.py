@@ -111,10 +111,10 @@ def buildblock(size):
 
 def usage():
 	print 'CowBoy Version 1.5'
-	print 'RIOTSEC'
+	print 'MADE BY D1MOD '
 	print 'New loaded Botnets: 39,445,657'
-	print 'Usage: python  CowBoy.py (url)'
-	print 'Example: python CowBoy.py https://www.mfa.gov.tr/'
+	print 'Usage: python2  CowBoy.py (url)'
+	print 'Example: python2 CowBoy.py https://www.mfa.gov.tr/'
 	print "\a"
 print \
 """                                                       
