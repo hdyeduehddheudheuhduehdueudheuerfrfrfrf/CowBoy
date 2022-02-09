@@ -10,6 +10,8 @@ import datetime
 import urllib2
 import re
 import os
+import argparse
+import logging
 
 
 #global params                                                                                       
@@ -53,7 +55,6 @@ def useragent_list():
 	
 
 ##################D1MOD FILE 
-[http_headers['Content-Type'] = random.choice(['multipart/form-data', 'application/x-url-encoded']
 ##################################################################################################
 	
 
