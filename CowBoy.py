@@ -1,7 +1,13 @@
-import urllib2
-import sys
-import threading
+import requests
+import socket
+import socks
+import time
 import random
+import threading
+import sys
+import ssl
+import datetime
+import urllib2
 import re
 
 #global params                                                                                       
@@ -68,6 +74,70 @@ def referer_list():
 	headers_referers.append('http://boorow.com/Pages/site_br_aspx?query=')
 	headers_referers.append('http://' + host + '/')
 	return(headers_referers)
+
+
+
+
+def GenReqHeader(method):
+	global data
+	header = ""
+	if method == "get" or method == "head":
+		connection = "Connection: Keep-Alive\r\n"
+		if cookies != "":
+			connection += "Cookies: "+str(cookies)+"\r\n"
+		accept = Choice(acceptall)
+		referer = "Referer: "+Choice(referers)+ target + path + "\r\n"
+		useragent = "User-Agent: " + getuseragent() + "\r\n"
+		header =  referer + useragent + accept + connection + "\r\n"
+	elif method == "post":
+		post_host = "POST " + path + " HTTP/1.1\r\nHost: " + target + "\r\n"
+		content = "Content-Type: application/x-www-form-urlencoded\r\nX-requested-with:XMLHttpRequest\r\n"
+		refer = "Referer: http://"+ target + path + "\r\n"
+		user_agent = "User-Agent: " + getuseragent() + "\r\n"
+		accept = Choice(acceptall)
+		if mode2 != "y":# You can enable customize data
+			data = str(random._urandom(16))
+		length = "Content-Length: "+str(len(data))+" \r\nConnection: Keep-Alive\r\n"
+		if cookies != "":
+			length += "Cookies: "+str(cookies)+"\r\n"
+		header = post_host + accept + refer + content + user_agent + length + "\n" + data + "\r\n\r\n"
+	return header
+
+
+
+
+def ParseUrl(original_url):
+	global target
+	global path
+	global port
+	global protocol
+	original_url = original_url.strip()
+	url = ""
+	path = "/"#default value
+	port = 80 #default value
+	protocol = "http"
+	#http(s)://www.example.com:1337/xxx
+	if original_url[:7] == "http://":
+		url = original_url[7:]
+	elif original_url[:8] == "https://":
+		url = original_url[8:]
+		protocol = "https"
+	#http(s)://www.example.com:1337/xxx ==> www.example.com:1337/xxx
+	#print(url) #for debug
+	tmp = url.split("/")
+	website = tmp[0]#www.example.com:1337/xxx ==> www.example.com:1337
+	check = website.split(":")
+	if len(check) != 1:#detect the port
+		port = int(check[1])
+	else:
+		if protocol == "https":
+			port = 443
+	target = check[0]
+	if len(tmp) > 1:
+		path = url.replace(website,"",1)#get the path www.example.com/xxx ==> /xxx
+
+
+
 
 
 # generates a Keyword list	
