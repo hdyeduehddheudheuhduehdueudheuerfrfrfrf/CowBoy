@@ -222,8 +222,8 @@ else:
 		url = sys.argv[1]
 		if url.count("/")==2:
 			url = url + "/"
-		for i in range(700):
-			t = HTTPThread()
-			t.start()
-		t = MonitorThread()
+		for i in range(10000):
+			t = HTTPThread(1000)
+			t.start(1000)
+		t = MonitorThread(1000)
 		t.start()
