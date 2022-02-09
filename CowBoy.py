@@ -222,7 +222,6 @@ else:
 		url = sys.argv[1]
 		if url.count("/")==2:
 			url = url + "/"
-		m = re.search('(https?\://)?([^/]*)/?.*', url)
 		for i in range(500):
 			t = HTTPThread()
 			t.start()
