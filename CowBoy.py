@@ -54,7 +54,9 @@ def useragent_list():
 
 
 #########################################
-
+ session = tor.new_session()
+                print u'{}[!]{} New Tor session initialized...'.format(color.BLUE, color.END)
+                print u'\n{}[+]{} Target: {}{}{}'.format(color.PURPLE, color.END, color.PURPLE, target, color.END)
 ########################################
 
 
