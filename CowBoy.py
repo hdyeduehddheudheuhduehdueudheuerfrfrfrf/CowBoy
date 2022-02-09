@@ -72,6 +72,17 @@ def run(self):
                     time.sleep(1)
                     sys.exit()
 
+            while self.running:
+                try:
+                    self._send_http_post()
+                except Exception as e:
+                    if e.args[0] == 32 or e.args[0] == 104:
+                        print(term.BOL + term.UP + term.CLEAR_EOL + "Thread broken, restarting..." + term.NORMAL)
+                        self.socks = socks.socksocket()
+                        break
+                    time.sleep(0.1)
+                    pass
+
 		
 # generates a referer array
 def referer_list():
