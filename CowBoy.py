@@ -70,7 +70,6 @@ ONE_BROWSER_QUERYS_LIMIT = 1500
 ANTI_DDOS_SLEEP_SECS = 600
 
 ######################################## BLAZNING FAST BYPASSER
-import cloudscraper
 scraper = cloudscraper.create_scraper(debug=True)
 scraper = cloudscraper.create_scraper(delay=1000)
 proxies = {"http": "http://localhost:8080", "https": "http://localhost:8080"}
