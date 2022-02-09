@@ -54,17 +54,7 @@ def useragent_list():
 
 
 #########################################
-        self.referrer_list = [
-            'https://www.google.com/?q=',
-            'https://www.usatoday.com/search/results?q=',
-            'https://engadget.search.aol.com/search?q=',
-            'https://cloudfare.com',
-            'https://github.com',
-            'https://en.wikipedia.org',
-            'https://youtu.be',
-            'https://mozilla.org',
-            'https://microsoft.com',
-            'https://wordpress.org'
+  
 ########################################
 
 
@@ -256,6 +246,8 @@ def referer_list():
 	headers_referers.append('http://www.sogou.com/web?query=')
 	headers_referers.append('http://api.duckduckgo.com/html/?q=')
 	headers_referers.append('http://boorow.com/Pages/site_br_aspx?query=')
+	headers_referers.append('https://cloudfare.com')
+	headers_referers.append('https://wordpress.org')
 	headers_referers.append('http://' + host + '/')
 	return(headers_referers)
 
