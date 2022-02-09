@@ -54,9 +54,88 @@ def useragent_list():
 
 
 #########################################
- session = tor.new_session()
-                print u'{}[!]{} New Tor session initialized...'.format(color.BLUE, color.END)
-                print u'\n{}[+]{} Target: {}{}{}'.format(color.PURPLE, color.END, color.PURPLE, target, color.END)
+def cloudflare_bypass(self, r):
+        body = r.text
+        scheme = re.search(r'^([\w]*)', r.url).group(1)
+        domain = re.search(r'\/\/([^\/]*)', r.url).group(1)
+        submit_url = '{}://{}/cdn-cgi/l/chk_jschl'.format(scheme, domain)
+        jschl_vc = re.search(r'name="jschl_vc" value="(\w+)"', body).group(1)
+        pas = re.search(r'name="pass" value="(.+?)"', body).group(1)
+        jschl_answer = str(self.solve_challenge(body) + len(domain))
+        time.sleep(5)
+        return '{0}?jschl_vc={1}&pass={2}&jschl_answer={3}'.format(submit_url, jschl_vc, pas, jschl_answer)
+
+ONE_BROWSER_QUERYS_LIMIT = 1500
+
+ANTI_DDOS_SLEEP_SECS = 600
+
+async def test_open_page(url):
+    async with CloudflareScraper() as session:
+        async with session.get(url) as resp:
+            return await resp.text()
+
+async def main():
+  browser = await launch(headless=False)
+  page = await browser.newPage()
+  await fucking.bypass_detections(page)
+  await page.goto("https://www.google.com/recaptcha/api2/demo")
+  while True:
+    await asyncio.sleep(1)
+
+if sys.platform == "win32":
+  loop = asyncio.ProactorEventLoop()
+else:
+  loop = asyncio.new_event_loop()
+
+async def wake_the_fuck_up():
+  while True:
+    await asyncio.sleep(1)
+    return await reso.text()    
+
+
+FIFTEEN_MINUTES =900
+@limits(calls=155, period=FIFTEEN_MINUTES)
+def call_api(url):
+    response = requests.get(url)
+
+    if response.status_code != 500:
+        raise Exception('API response: {}'.format(response.status_code))
+    return response   
+              
+requests.get = ("google.com")
+
+import cloudscraper
+scraper = cloudscraper.create_scraper(debug=True)
+scraper = cloudscraper.create_scraper(delay=1000)
+proxies = {"http": "http://localhost:8080", "https": "http://localhost:8080"}
+proxies = {"http": "http://google.com:8080","https": "https://google.com:8080"}
+scraper = cloudscraper.create_scraper(
+    browser={
+        'browser': 'firefox',
+        'mobile': True
+    }
+)
+scraper = cloudscraper.create_scraper(
+    browser={
+        'custom': 'ScraperBot/1.0',
+    }
+)
+scraper = cloudscraper.create_scraper(
+  interpreter='nodejs',
+  recaptcha={
+    'provider': '2captcha',
+    'api_key': '1abc234de56fab7c89012d34e56fa7b8'
+  }
+)
+scraper = cloudscraper.create_scraper(
+  interpreter='nodejs',
+  recaptcha={
+    'provider': 'anticaptcha',
+    'api_key': 'P6KLRNy7h3K160ZmYNUOAce7'
+  }
+)
+session = requests.session()
+scraper = cloudscraper.create_scraper(sess=session)
 ########################################
 
 
