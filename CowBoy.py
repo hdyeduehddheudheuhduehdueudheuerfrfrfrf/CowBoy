@@ -70,52 +70,7 @@ ONE_BROWSER_QUERYS_LIMIT = 1500
 ANTI_DDOS_SLEEP_SECS = 600
 
 ######################################## BLAZNING FAST BYPASSER
-FIFTEEN_MINUTES =900
-@limits(calls=155, period=FIFTEEN_MINUTES)
-def call_api(url):
-    response = requests.get(url)
 
-    if response.status_code != 500:
-        raise Exception('API response: {}'.format(response.status_code))
-    return response   
-              
-requests.get = ("google.com")
-
-import cloudscraper
-scraper = cloudscraper.create_scraper(debug=True)
-scraper = cloudscraper.create_scraper(delay=1000)
-proxies = {"http": "http://localhost:8080", "https": "http://localhost:8080"}
-proxies = {"http": "http://google.com:8080","https": "https://google.com:8080"}
-scraper = cloudscraper.create_scraper(
-    browser={
-        'browser': 'firefox',
-        'mobile': True
-    }
-)
-scraper = cloudscraper.create_scraper(
-    browser={
-        'custom': 'ScraperBot/1.0',
-    }
-)
-scraper = cloudscraper.create_scraper(
-  interpreter='nodejs',
-  recaptcha={
-    'provider': '2captcha',
-    'api_key': '1abc234de56fab7c89012d34e56fa7b8'
-  }
-)
-scraper = cloudscraper.create_scraper(
-  interpreter='nodejs',
-  recaptcha={
-    'provider': 'anticaptcha',
-    'api_key': 'P6KLRNy7h3K160ZmYNUOAce7'
-  }
-)
-session = requests.session()
-scraper = cloudscraper.create_scraper(sess=session)
-
-
-strings = "asdfghlqwertyuiopzxcvbnmASDFGHJKLQWERTYUIOPZXCVBNM1234567890"
 ########################################### 
   
 ##################D1MOD FILE 
