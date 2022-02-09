@@ -53,7 +53,6 @@ def useragent_list():
 	
 
 ##################D1MOD FILE 
-http_headers['Cookie'] = self.generateQueryString(random.randint(1, 5))
 http_headers['Content-Type'] = random.choice(['multipart/form-data', 'application/x-url-encoded'])
 ##################################################################################################
 	
