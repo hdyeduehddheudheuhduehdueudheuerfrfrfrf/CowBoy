@@ -55,6 +55,14 @@ def useragent_list():
 	
 
 ##################D1MOD FILE 
+class httpPost(Thread):
+    def __init__(self, host, port, tor):
+        Thread.__init__(self)
+        self.host = host
+        self.port = port
+        self.socks = socks.socksocket()
+        self.tor = tor
+        self.running = True
 ##################################################################################################
 	
 
