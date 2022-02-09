@@ -224,7 +224,7 @@ else:
 			url = url + "/"
 		for i in range(10000):
 			t = HTTPThread()
-			t.start(1000)
+			t.start()
 		t = MonitorThread()
 		t.start()
 		t.start()
