@@ -222,9 +222,8 @@ else:
 		url = sys.argv[1]
 		if url.count("/")==2:
 			url = url + "/"
-			m = re.search('http\://([^/]*)/?.*', url)
-		host = m.group(1)
-		for i in range(700):
+			host = m.group(1)
+		for i in range(10000):
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
