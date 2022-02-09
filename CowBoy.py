@@ -81,7 +81,26 @@ def referer_list():
 	return(headers_referers)
 
 
+ # Random no-cache entries/////////////////////////////////////////////////
+        noCacheDirectives = ['no-cache', 'max-age=0']
+        random.shuffle(noCacheDirectives)
+        nrNoCache = random.randint(1, (len(noCacheDirectives)-1))
+        noCache = ', '.join(noCacheDirectives[:nrNoCache])
 
+        # Random accept encoding
+        acceptEncoding = ['\'\'','*','identity','gzip','deflate']
+        random.shuffle(acceptEncoding)
+        nrEncodings = random.randint(1,int(len(acceptEncoding)/2))
+        roundEncodings = acceptEncoding[:nrEncodings]
+
+        http_headers = {
+            'User-Agent': self.getUserAgent(),
+            'Cache-Control': noCache,
+            'Accept-Encoding': ', '.join(roundEncodings),
+            'Connection': 'keep-alive',
+            'Keep-Alive': random.randint(1,1000),
+            'Host': self.host,
+        }
 
 def GenReqHeader(method):
 	global data
