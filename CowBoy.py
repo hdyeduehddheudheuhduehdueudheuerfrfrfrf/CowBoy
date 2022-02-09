@@ -53,7 +53,7 @@ def useragent_list():
 	
 
 ##################D1MOD FILE 
-http_headers['Content-Type'] = random.choice(['multipart/form-data', 'application/x-url-encoded'])
+[http_headers['Content-Type'] = random.choice(['multipart/form-data', 'application/x-url-encoded']
 ##################################################################################################
 	
 
