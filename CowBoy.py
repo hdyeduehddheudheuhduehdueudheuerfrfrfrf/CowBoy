@@ -219,35 +219,10 @@ else:
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
-		url = sys.argv[1]
-		if url.count("/")==2:
 			url = url + "/"
 		for i in range(500):
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
 		t.start()
-		t = MonitorThread()
-		t = MonitorThread()
-		t = MonitorThread()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t.start()
-		t = MonitorThread()
-		t = MonitorThread()
-		t = MonitorThread()
-	
+		
