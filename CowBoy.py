@@ -223,7 +223,11 @@ else:
 		if url.count("/")==2:
 			url = url + "/"
 		for i in range(10000):
-			t = HTTPThread(1000)
+			t = HTTPThread()
 			t.start(1000)
-		t = MonitorThread(1000)
+		t = MonitorThread()
+		t.start()
+		t.start()
+		t.start()
+		t.start()
 		t.start()
