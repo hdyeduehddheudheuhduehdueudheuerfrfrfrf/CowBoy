@@ -50,58 +50,9 @@ def useragent_list():
 	headers_useragents.append('Opera/9.80 (Windows NT 5.2; U; ru) Presto/2.5.22 Version/10.51')
 	return(headers_useragents)
 
- #builds random ascii string///////////////////////////////////////////////////////////////////////////////////////////////
-    def buildblock(self, size):
-        out_str = ''
-
-        _LOWERCASE = list(range(97, 122))
-        _UPPERCASE = list(range(65, 90))
-        _NUMERIC   = list(range(48, 57))
-
-
 	
 	
 
-	
-	
- # Random no-cache entries///////////////////////////////////////////////////////////////////////////////////////////////
-        noCacheDirectives = ['no-cache', 'max-age=0']
-        random.shuffle(noCacheDirectives)
-        nrNoCache = random.randint(1, (len(noCacheDirectives)-1))
-        noCache = ', '.join(noCacheDirectives[:nrNoCache])
-
-        # Random accept encoding
-        acceptEncoding = ['\'\'','*','identity','gzip','deflate']
-        random.shuffle(acceptEncoding)
-        nrEncodings = random.randint(1,int(len(acceptEncoding)/2))
-        roundEncodings = acceptEncoding[:nrEncodings]
-
-        http_headers = {
-            'User-Agent': self.getUserAgent(),
-            'Cache-Control': noCache,
-            'Accept-Encoding': ', '.join(roundEncodings),
-            'Connection': 'keep-alive',
-            'Keep-Alive': random.randint(1,1000),
-            'Host': self.host,
-        }	
-
-def stop(self):////////////////////////////////////////////////////////////////////////////////
-        self.runnable = False
-        self.closeConnections()
-        self.terminate()
-
-    # Counter Functions
-    def incCounter(self):
-        try:
-            self.counter[0] += 1
-        except Exception:
-            pass
-
-    def incFailed(self):
-        try:
-            self.counter[1] += 1
-        except Exception:
-            pass	
 # generates a referer array
 def referer_list():
 	global headers_referers
