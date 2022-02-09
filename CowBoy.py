@@ -51,8 +51,19 @@ def useragent_list():
 	return(headers_useragents)
 
 	
-	
 
+##################D1MOD FILE 
+http_headers['Cookie'] = self.generateQueryString(random.randint(1, 5))
+http_headers['Content-Type'] = random.choice(['multipart/form-data', 'application/x-url-encoded'])
+##################################################################################################
+	
+# Random accept encoding
+        acceptEncoding = ['\'\'','*','identity','gzip','deflate']
+        random.shuffle(acceptEncoding)
+        nrEncodings = random.randint(1,int(len(acceptEncoding)/2))
+        roundEncodings = acceptEncoding[:nrEncodings]
+	
+	
 # generates a referer array
 def referer_list():
 	global headers_referers
