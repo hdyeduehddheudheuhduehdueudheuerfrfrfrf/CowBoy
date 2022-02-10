@@ -387,8 +387,6 @@ def keyword_list():
         keyword_top.append('DJ Bach')
 
 ########################################### Vloudflare V2
-    for sub in subdom:
-        try:
             hosts = str(sub) + "." + str(site)
             bypass = socket.gethostbyname(str(hosts))
             #print('Cloudflare Bypassed ! Real IP Address => '+bypass)
