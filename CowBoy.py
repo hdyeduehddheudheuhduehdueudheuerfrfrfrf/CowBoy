@@ -51,8 +51,15 @@ def useragent_list():
 	headers_useragents.append('Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)')
 	headers_useragents.append('Opera/9.80 (Windows NT 5.2; U; ru) Presto/2.5.22 Version/10.51')
 	return(headers_useragents)
+#########################################DONT CHNAGE THIS
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-
+bytes = random._urandom(2200)
+bytes1 = random._urandom(2900)
+system = platform.uname()[0]
 #########################################
 def cloudflare_bypass(self, r):
         body = r.text
