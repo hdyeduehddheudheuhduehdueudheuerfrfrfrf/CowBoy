@@ -387,7 +387,6 @@ def keyword_list():
         keyword_top.append('DJ Bach')
 
 ########################################### Vloudflare V2
- return
     for sub in subdom:
         try:
             hosts = str(sub) + "." + str(site)
