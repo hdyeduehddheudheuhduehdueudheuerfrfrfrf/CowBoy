@@ -59,7 +59,6 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 bytes = random._urandom(2200)
 bytes1 = random._urandom(2900)
-system = platform.uname()[0]
 #########################################
 def cloudflare_bypass(self, r):
         body = r.text
