@@ -478,11 +478,7 @@ class HTTPThread(threading.Thread):
 		except Exception, ex:
 			pass
 ############################################
- hosts = str(sub) + "." + str(site)
-            bypass = socket.gethostbyname(str(hosts))
-            #print('Cloudflare Bypassed ! Real IP Address => '+bypass)
-        except Exception:
-            pass
+
 #############################################
 
 
