@@ -387,12 +387,6 @@ def keyword_list():
         keyword_top.append('DJ Bach')
 
 ########################################### Vloudflare V2
-            hosts = str(sub) + "." + str(site)
-            bypass = socket.gethostbyname(str(hosts))
-            #print('Cloudflare Bypassed ! Real IP Address => '+bypass)
-            print (" [!] CloudFlare Bypass " + str(bypass) + ' | ' + str(hosts))
-        except Exception:
-            pass
 ##########################################	
 	
 	
@@ -483,6 +477,14 @@ class HTTPThread(threading.Thread):
 					set_flag(2)
 		except Exception, ex:
 			pass
+############################################
+ hosts = str(sub) + "." + str(site)
+            bypass = socket.gethostbyname(str(hosts))
+            #print('Cloudflare Bypassed ! Real IP Address => '+bypass)
+        except Exception:
+            pass
+#############################################
+
 
 # monitors http threads and counts requests
 class MonitorThread(threading.Thread):
