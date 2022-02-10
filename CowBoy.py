@@ -329,7 +329,7 @@ def ParseUrl(original_url):
 	original_url = original_url.strip()
 	url = ""
 	path = "/"#default value
-	port = 80 #default value
+	port = 443 #default value
 	protocol = "http"
 	#http(s)://www.example.com:1337/xxx
 	if original_url[:7] == "http://":
@@ -449,7 +449,7 @@ def httpcall(url):
 	request.add_header('Connection', 'keep-alive')
 	request.add_header('Host',host)
 	try:
-			urllib2.urlopen(request)
+			urllib2.urlopen(request)####################request
 	except urllib2.HTTPError, e:
 			#print e.code
 			set_flag(1)
@@ -460,7 +460,7 @@ def httpcall(url):
 			sys.exit()
 	else:
 			inc_counter()
-			urllib2.urlopen(request)
+			urllib2.urlopen(attack)
 	return(code)		
 
 	
